@@ -30,7 +30,7 @@ int main() {
         cout << "Seleccione una opcion: ";
         cin >> opcion;
         cin.ignore();
-        if (opcion == 'A') {
+        if (opcion == 'A' || opcion == 'a') {
             if (cantidadProductos >= MAX_PRODUCTOS) {
                 cout << "No se pueden registrar más productos. Límite alcanzado." << endl;
             } else {
@@ -43,11 +43,11 @@ int main() {
                 cantidadProductos++;
                 cout << "* Producto registrado exitosamente *" << endl;
             }
-        } else if (opcion == 's') {
+        } else if (opcion == 'S' || opcion == 's') {
             cout << "Saliendo del programa..." << endl;
         } else {
             cout << "Opción inválida. Intente nuevamente." << endl;
         }
-    } while (opcion != 'S');
+    } while (opcion != 'S' || opcion == 's');
     return 0;
 }
