@@ -43,11 +43,11 @@ int main() {
                 cantidadProductos++;
                 cout << "* Producto registrado exitosamente *" << endl;
             }
-        } else if (opcion == 'S' || opcion == 's') {
+		} else if (opcion == 'S' || opcion == 's') {
             cout << "Saliendo del programa..." << endl;
         } else {
             cout << "Opción inválida. Intente nuevamente." << endl;
         }
-    } while (opcion != 'S' || opcion == 's');
+    } while (opcion != 'S' && opcion != 's');
     return 0;
 }
