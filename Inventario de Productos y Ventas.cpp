@@ -56,16 +56,13 @@ int main() {
             }
 		} else if (opcion == 'C' || opcion == 'c') {
             cout << "\n--- BUSCAR PRODUCTO POR NOMBRE ---" << endl;
-
             if (cantidadProductos == 0) {
                 cout << "No hay productos registrados." << endl;
             } else {
                 string nombreBuscado;
                 bool encontrado = false;
-
                 cout << "Ingrese el nombre del producto a buscar: ";
                 getline(cin, nombreBuscado);
-
                 for (int i = 0; i < cantidadProductos; i++) {
                     if (productos[i].nombre == nombreBuscado) {
                         cout << "\nProducto encontrado:" << endl;
@@ -75,23 +72,19 @@ int main() {
                         break;
                     }
                 }
-
                 if (!encontrado) {
                     cout << "Producto no encontrado." << endl;
                 }
             }
 		} else if (opcion == 'D' || opcion == 'd') {
             cout << "\n--- ACTUALIZAR PRODUCTO ---" << endl;
-
             if (cantidadProductos == 0) {
                 cout << "No hay productos registrados." << endl;
             } else {
                 string nombreActualizar;
                 bool encontrado = false;
-
                 cout << "Ingrese el nombre del producto a actualizar: ";
                 getline(cin, nombreActualizar);
-
                 for (int i = 0; i < cantidadProductos; i++) {
                     if (productos[i].nombre == nombreActualizar) {
                         cout << "Producto encontrado:" << endl;
@@ -109,12 +102,40 @@ int main() {
                         break;
                     }
                 }
-
                 if (!encontrado) {
                     cout << "Producto no encontrado." << endl;
                 }
             }
-	} else if (opcion == 'S' || opcion == 's') {
+	} else if (opcion == 'E' || opcion == 'e') {
+            cout << "\n--- ELIMINAR PRODUCTO ---" << endl;
+
+            if (cantidadProductos == 0) {
+                cout << "No hay productos registrados." << endl;
+            } else {
+                string nombreEliminar;
+                bool eliminado = false;
+
+                cout << "Ingrese el nombre del producto a eliminar: ";
+                getline(cin, nombreEliminar);
+
+                for (int i = 0; i < cantidadProductos; i++) {
+                    if (productos[i].nombre == nombreEliminar) {
+                        // Mover los siguientes productos una posición hacia arriba
+                        for (int j = i; j < cantidadProductos - 1; j++) {
+                            productos[j] = productos[j + 1];
+                        }
+                        cantidadProductos--;
+                        eliminado = true;
+                        cout << "* Producto eliminado correctamente *" << endl;
+                        break;
+                    }
+                }
+
+                if (!eliminado) {
+                    cout << "Producto no encontrado." << endl;
+                }
+            }
+		} else if (opcion == 'S' || opcion == 's') {
             cout << "Saliendo del programa..." << endl;
         } else {
             cout << "Opción inválida. Intente nuevamente." << endl;
