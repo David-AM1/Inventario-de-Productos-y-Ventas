@@ -230,6 +230,17 @@ int main() {
                     cout << "-------------------------" << endl;
                 }
             }
+        } else if (opcion == 'H' || opcion == 'h') {
+            cout << "\n--- TOTAL DE VENTAS REALIZADAS ---" << endl;
+            if (cantidadVentas == 0) {
+                cout << "No hay ventas registradas." << endl;
+            } else {
+                float totalVentas = 0;
+                for (int i = 0; i < cantidadVentas; i++) {
+                    totalVentas += ventas[i].precioTotal;
+                }
+                cout << "El monto total de ventas es: S/ " << totalVentas << endl;
+            }
 		} else if (opcion == 'S' || opcion == 's') {
             cout << "Saliendo del programa..." << endl;
         } else {
