@@ -54,6 +54,32 @@ int main() {
                     cout << "Precio: S/ " << productos[i].precio << endl;
                 }
             }
+		} else if (opcion == 'C' || opcion == 'c') {
+            cout << "\n--- BUSCAR PRODUCTO POR NOMBRE ---" << endl;
+
+            if (cantidadProductos == 0) {
+                cout << "No hay productos registrados." << endl;
+            } else {
+                string nombreBuscado;
+                bool encontrado = false;
+
+                cout << "Ingrese el nombre del producto a buscar: ";
+                getline(cin, nombreBuscado);
+
+                for (int i = 0; i < cantidadProductos; i++) {
+                    if (productos[i].nombre == nombreBuscado) {
+                        cout << "\nProducto encontrado:" << endl;
+                        cout << "Nombre: " << productos[i].nombre << endl;
+                        cout << "Precio: S/ " << productos[i].precio << endl;
+                        encontrado = true;
+                        break;
+                    }
+                }
+
+                if (!encontrado) {
+                    cout << "Producto no encontrado." << endl;
+                }
+            }
 		} else if (opcion == 'S' || opcion == 's') {
             cout << "Saliendo del programa..." << endl;
         } else {
