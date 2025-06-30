@@ -80,7 +80,41 @@ int main() {
                     cout << "Producto no encontrado." << endl;
                 }
             }
-		} else if (opcion == 'S' || opcion == 's') {
+		} else if (opcion == 'D' || opcion == 'd') {
+            cout << "\n--- ACTUALIZAR PRODUCTO ---" << endl;
+
+            if (cantidadProductos == 0) {
+                cout << "No hay productos registrados." << endl;
+            } else {
+                string nombreActualizar;
+                bool encontrado = false;
+
+                cout << "Ingrese el nombre del producto a actualizar: ";
+                getline(cin, nombreActualizar);
+
+                for (int i = 0; i < cantidadProductos; i++) {
+                    if (productos[i].nombre == nombreActualizar) {
+                        cout << "Producto encontrado:" << endl;
+                        cout << "Nombre actual: " << productos[i].nombre << endl;
+                        cout << "Precio actual: S/ " << productos[i].precio << endl;
+
+                        cout << "\nIngrese el nuevo nombre: ";
+                        getline(cin, productos[i].nombre);
+                        cout << "Ingrese el nuevo precio: ";
+                        cin >> productos[i].precio;
+                        cin.ignore();
+
+                        cout << "* Producto actualizado exitosamente *" << endl;
+                        encontrado = true;
+                        break;
+                    }
+                }
+
+                if (!encontrado) {
+                    cout << "Producto no encontrado." << endl;
+                }
+            }
+	} else if (opcion == 'S' || opcion == 's') {
             cout << "Saliendo del programa..." << endl;
         } else {
             cout << "Opción inválida. Intente nuevamente." << endl;
