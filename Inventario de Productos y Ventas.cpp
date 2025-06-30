@@ -4,15 +4,25 @@
 using namespace std;
 
 const int MAX_PRODUCTOS = 100;
+const int MAX_VENTAS = 100;
 
 struct Producto {
     string nombre;
     float precio;
 };
 
+struct Venta {
+    int idVenta;
+    string producto;
+    int cantidad;
+    float precioTotal;
+};
+
 int main() {
 	SetConsoleOutputCP(CP_UTF8);
     Producto productos[MAX_PRODUCTOS];
+    Venta ventas[MAX_VENTAS];
+    int cantidadVentas = 0;
     int cantidadProductos = 0;
     char opcion;
     do {
@@ -106,9 +116,49 @@ int main() {
                     cout << "Producto no encontrado." << endl;
                 }
             }
+	} else if (opcion == 'F' || opcion == 'f') {
+            cout << "\n--- REGISTRAR VENTA ---" << endl;
+
+            if (cantidadProductos == 0) {
+                cout << "No hay productos registrados para vender." << endl;
+            } else if (cantidadVentas >= MAX_VENTAS) {
+                cout << "No se pueden registrar más ventas. Límite alcanzado." << endl;
+            } else {
+                string nombreProducto;
+                bool encontrado = false;
+                int cantidadVendida;
+                float precioUnitario = 0.0;
+
+                cout << "Ingrese el nombre del producto vendido: ";
+                getline(cin, nombreProducto);
+
+                for (int i = 0; i < cantidadProductos; i++) {
+                    if (productos[i].nombre == nombreProducto) {
+                        encontrado = true;
+                        precioUnitario = productos[i].precio;
+
+                        cout << "Ingrese la cantidad vendida: ";
+                        cin >> cantidadVendida;
+                        cin.ignore();
+
+                        ventas[cantidadVentas].idVenta = cantidadVentas + 1;
+                        ventas[cantidadVentas].producto = nombreProducto;
+                        ventas[cantidadVentas].cantidad = cantidadVendida;
+                        ventas[cantidadVentas].precioTotal = precioUnitario * cantidadVendida;
+
+                        cantidadVentas++;
+
+                        cout << "* Venta registrada correctamente *" << endl;
+                        break;
+                    }
+                }
+
+                if (!encontrado) {
+                    cout << "Producto no encontrado. No se puede registrar la venta." << endl;
+                }
+            }
 	} else if (opcion == 'E' || opcion == 'e') {
             cout << "\n--- ELIMINAR PRODUCTO ---" << endl;
-
             if (cantidadProductos == 0) {
                 cout << "No hay productos registrados." << endl;
             } else {
@@ -130,9 +180,41 @@ int main() {
                         break;
                     }
                 }
-
                 if (!eliminado) {
                     cout << "Producto no encontrado." << endl;
+                }
+            }
+		} else if (opcion == 'F' || opcion == 'f') {
+            cout << "\n--- REGISTRAR VENTA ---" << endl;
+            if (cantidadProductos == 0) {
+                cout << "No hay productos registrados para vender." << endl;
+            } else if (cantidadVentas >= MAX_VENTAS) {
+                cout << "No se pueden registrar más ventas. Límite alcanzado." << endl;
+            } else {
+                string nombreProducto;
+                bool encontrado = false;
+                int cantidadVendida;
+                float precioUnitario = 0.0;
+                cout << "Ingrese el nombre del producto vendido: ";
+                getline(cin, nombreProducto);
+                for (int i = 0; i < cantidadProductos; i++) {
+                    if (productos[i].nombre == nombreProducto) {
+                        encontrado = true;
+                        precioUnitario = productos[i].precio;
+                        cout << "Ingrese la cantidad vendida: ";
+                        cin >> cantidadVendida;
+                        cin.ignore();
+                        ventas[cantidadVentas].idVenta = cantidadVentas + 1;
+                        ventas[cantidadVentas].producto = nombreProducto;
+                        ventas[cantidadVentas].cantidad = cantidadVendida;
+                        ventas[cantidadVentas].precioTotal = precioUnitario * cantidadVendida;
+                        cantidadVentas++;
+                        cout << "* Venta registrada correctamente *" << endl;
+                        break;
+                    }
+                }
+                if (!encontrado) {
+                    cout << "Producto no encontrado. No se puede registrar la venta." << endl;
                 }
             }
 		} else if (opcion == 'S' || opcion == 's') {
