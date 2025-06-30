@@ -42,6 +42,18 @@ int main() {
                 cantidadProductos++;
                 cout << "* Producto registrado exitosamente *" << endl;
             }
+		} else if (opcion == 'B' || opcion == 'b') {
+            cout << "\n--- LISTADO DE PRODUCTOS ---" << endl;
+
+            if (cantidadProductos == 0) {
+                cout << "No hay productos registrados." << endl;
+            } else {
+                for (int i = 0; i < cantidadProductos; i++) {
+                    cout << i + 1 << ") ";
+                    cout << "Nombre: " << productos[i].nombre << " | ";
+                    cout << "Precio: S/ " << productos[i].precio << endl;
+                }
+            }
 		} else if (opcion == 'S' || opcion == 's') {
             cout << "Saliendo del programa..." << endl;
         } else {
