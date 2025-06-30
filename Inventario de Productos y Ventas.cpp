@@ -15,7 +15,6 @@ int main() {
     Producto productos[MAX_PRODUCTOS];
     int cantidadProductos = 0;
     char opcion;
-
     do {
         cout << "\n=== SISTEMA DE INVENTARIO Y VENTAS ===" << endl;
         cout << "A: Registrar un nuevo producto" << endl;
