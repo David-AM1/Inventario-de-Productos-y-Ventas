@@ -24,7 +24,7 @@ int main() {
     Venta ventas[MAX_VENTAS];
     int cantidadVentas = 0;
     int cantidadProductos = 0;
-    char opcion;
+    char opcion;    
     do {
         cout << "\n=== SISTEMA DE INVENTARIO Y VENTAS ===" << endl;
         cout << "A: Registrar un nuevo producto" << endl;
@@ -215,6 +215,19 @@ int main() {
                 }
                 if (!encontrado) {
                     cout << "Producto no encontrado. No se puede registrar la venta." << endl;
+                }
+            }
+		} else if (opcion == 'G' || opcion == 'g') {
+            cout << "\n--- LISTADO DE VENTAS REALIZADAS ---" << endl;
+            if (cantidadVentas == 0) {
+                cout << "No hay ventas registradas." << endl;
+            } else {
+                for (int i = 0; i < cantidadVentas; i++) {
+                    cout << "Venta #" << ventas[i].idVenta << endl;
+                    cout << "  Producto: " << ventas[i].producto << endl;
+                    cout << "  Cantidad: " << ventas[i].cantidad << endl;
+                    cout << "  Precio Total: S/ " << ventas[i].precioTotal << endl;
+                    cout << "-------------------------" << endl;
                 }
             }
 		} else if (opcion == 'S' || opcion == 's') {
